@@ -8,11 +8,11 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
     inputs:
-      name:
+      model-name:
         description: 'Path of the model to package'
         default: 'keras'
         type: string
-      version:
+      model-version:
         description: 'Version the package to build'
         default: '1'
         type: string
@@ -37,7 +37,8 @@ jobs:
         pip install numpy
     - name: Create randomized text file
       run: |
-         python src/test.py
+        python src/test.py
+        echo Package '${{ inputs.model-name }}' with version '${{ inputs.model-version }}' has been built
     - name: Publish artifact
       uses: actions/upload-artifact@v3
       with:
