@@ -6,6 +6,16 @@ name: Python test
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Path of the model to package'
+        default: 'keras'
+        type: string
+      version:
+        description: 'Version the package to build'
+        default: '1'
+        type: string
 
 permissions:
   contents: read
